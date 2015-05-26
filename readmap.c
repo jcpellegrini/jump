@@ -35,7 +35,7 @@ char** readmap(char* url) {
                 
                 if(!map[i]) {
                     printf("Sem memória suficiente\n");
-                    break;
+                    return NULL;
                 }
             }
         }
@@ -45,9 +45,9 @@ char** readmap(char* url) {
         while( (ch=fgetc(arq))!= EOF ) {
             
             map[i][j] = ch;
-            
             i++;
-            if(ch == '\n'){
+            
+            if(ch == '\n') {
                 i = 0;
                 j++;   
             }
