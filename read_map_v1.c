@@ -26,13 +26,11 @@ int main(void) {
                         i++;
                         if(ch == '\n'){
                                 i = 0;
-                                j ++;   
+                                j ++;
                         }
                 }
         }
         fclose(arq);
         return 0;
 }
-
-
 
