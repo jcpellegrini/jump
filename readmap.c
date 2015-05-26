@@ -19,6 +19,14 @@
 #define NCOLUNA 20
 
 
+/*
+ readmap (char *url) reads a map from the file specified,
+ and returns the map as a matrix (char**).
+
+ example:
+   char **M;
+   M = readmap (filename);
+ */
 char** readmap(char* url) {
     
     FILE *arq = fopen(url, "r");
