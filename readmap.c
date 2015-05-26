@@ -37,13 +37,14 @@ char** readmap(char* url) {
         return NULL;
         
     } else {
-        int i = 0, j = 0;
+	int i;
+	int j = 0;
         char ch;
         char **map = malloc(NLINHAS*sizeof(char *));
         
         if(!map) printf("Sem memória suficiente\n");
         else {
-            for(; i < NLINHAS; i++) {
+            for(i=0; i < NLINHAS; i++) {
                 map[i] = malloc(NCOLUNA*sizeof(char));
                 
                 if(!map[i]) {
@@ -73,4 +74,14 @@ char** readmap(char* url) {
     
 }
 
+void show_map(char **map) {
+	FILE *out = stdout;
+	int i,j;
+	for(i=0;i<NLINHAS; i++) {
+		for(j=0;j<NCOLUNA; j++) {
+			fprintf(out,"%c",map[i][j]);
+		}
+		fprintf(out,"\n");
+	}
+}
 
