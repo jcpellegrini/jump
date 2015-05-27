@@ -22,7 +22,7 @@ Currently only the map walking part is implemented. The next steps are:
 * implement graphical interface (Tk or GTK, maybe?)
 * implement passages, so the user will be sent to different servers
 * write history explaining plugins, so that the whole adventure of a user
-  through a server is "told is natural language"
+  through a server is "told in natural language"
 * expand the previous item so a user can also have his history told,
   in natural language, through different servers
 
