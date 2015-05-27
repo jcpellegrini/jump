@@ -32,8 +32,7 @@ int main(int argc, char *argv[]) {
 
 
 	if(argc > 1) {
-		filename=malloc(100);       /* FIXME: fixed length? */
-		// FIXED: user can choose map filename
+		filename = malloc(255*sizeof(char));
 		strcpy(filename, argv[1]);
 	} else {
 		printf(_("you have to choose a map file in the argument\n"));
@@ -42,10 +41,12 @@ int main(int argc, char *argv[]) {
 
 	map = readmap (filename);
 
-	if (map==NULL) {
+	if (!map) {
 		printf(_("cannot read map file!\n"));
 		exit (-1);
 	}
+
+	free(filename);
 
 	keyboard_interact(map, p);
 	exit(0);
