@@ -12,16 +12,29 @@
 #define SPACE ' '
 #define WALL  '#'
 
+/**
+   bump() is called when the player hits a wall
+
+   FIXME: implement this
+ **/
 void bump() {
 }
 
 
+/**
+   keyboard_interact implements an interaction loop:
+   it will
+   1. show the map and the player
+   2. wait for a command (n,s,e,w)
+   3. change the player's position
+   4. start again at (1)
+ **/
 void keyboard_interact(char **map, player p) {
 	FILE *in = stdin;
 	int new_x,new_y;
 	char cmd;
 	for (;;) {
-		show_map(map);
+		show_map_player(map,p);
 
 		new_x = p->x;
 		new_y = p->y;
@@ -30,10 +43,10 @@ void keyboard_interact(char **map, player p) {
 
 		/* FIXME: what if we want to translate the commands? */
 		switch (cmd) {
-			case 'n': new_y--; break;
-			case 's': new_y++; break;
-			case 'e': new_x++; break;
-			case 'w': new_x--; break;
+			case 'n': new_x--; break;
+			case 's': new_x++; break;
+			case 'e': new_y++; break;
+			case 'w': new_y--; break;
 		}
 
 		if (map[new_x][new_y]==WALL)

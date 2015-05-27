@@ -6,6 +6,10 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <libintl.h>
+#define _(str) gettext(str)
+
 
 #include "player.h"
 #include "readmap.h"
@@ -15,17 +19,18 @@ int main() {
 	char *filename;
 	char **map;
 	player p = malloc(sizeof (struct player_str));
-
-
 	/* FIXME: */
+	p->symbol = '*';
 	p->x = 4;
 	p->y = 4;
 
-	filename=malloc(100); /* FIXME: fixed length? */
+	filename=malloc(100);       /* FIXME: fixed length? */
+	strcpy(filename,"map.txt"); /* FIXME: user can't choose map
+                                              filename */
 	map = readmap (filename);
 
 	if (map==NULL) {
-		printf("wrong!");
+		printf(_("couldn't read map"));
 		exit (-1);
 	}
 

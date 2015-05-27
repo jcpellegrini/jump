@@ -14,6 +14,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
+#include <libintl.h>
+#define _(str) gettext(str)
+
+#include "player.h"
 
 #define NLINHAS 20
 #define NCOLUNA 20
@@ -32,23 +37,21 @@ char** readmap(char* url) {
     FILE *arq = fopen(url, "r");
     
     if(!arq) { 
-        
-        printf("Erro, não foi possivel abrir o arquivo\n");
+        printf(_("cannot read map file!\n"));
         return NULL;
-        
     } else {
 	int i;
 	int j = 0;
         char ch;
         char **map = malloc(NLINHAS*sizeof(char *));
         
-        if(!map) printf("Sem memória suficiente\n");
+        if(!map) printf(_("not enough memory!\n"));
         else {
             for(i=0; i < NLINHAS; i++) {
                 map[i] = malloc(NCOLUNA*sizeof(char));
                 
                 if(!map[i]) {
-                    printf("Sem memória suficiente\n");
+                    printf(_("not enough memory!\n"));
                     return NULL;
                 }
             }
@@ -70,18 +73,32 @@ char** readmap(char* url) {
         fclose(arq);
         return map;
     }
-    
-    
 }
 
-void show_map(char **map) {
+/*
+   shows the map and the player on standard output.
+*/
+void show_map_player(char **map, player p) {
 	FILE *out = stdout;
 	int i,j;
 	for(i=0;i<NLINHAS; i++) {
-		for(j=0;j<NCOLUNA; j++) {
-			fprintf(out,"%c",map[i][j]);
-		}
+		for(j=0;j<NCOLUNA; j++)
+			if (p->x == i && p->y == j)
+				fprintf(out,"%c",p->symbol);
+			else
+				fprintf(out,"%c",map[i][j]);
 		fprintf(out,"\n");
 	}
 }
 
+
+/*
+   shows the map on standard output.
+*/
+void show_map(char **map) {
+	/* FIXME: */
+	player p = malloc(sizeof(struct player_str));
+	p->symbol=' ';
+	show_map_player(map, p);
+	free(p);
+}

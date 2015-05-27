@@ -8,7 +8,10 @@
 #ifndef READMAP_H
 #define READMAP_H
 
+#include "player.h"
+
 char** readmap(char* url);
 void show_map(char **map);
+void show_map_player(char **map,player p);
 
 #endif
