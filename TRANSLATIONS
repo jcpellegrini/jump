@@ -3,13 +3,38 @@
 
 $ xgettext -d jump -o po/jump.pot -k_ -s *.c
 
-2. use poedit to translate the messages
+this will create a "po/jump.pot" file in the
+po/ directory
+
+2.a use poedit to translate the messages
 
 $ poedit po/jump.pot
 
-3. save in po/XX/
+2.b or translate manually:
 
-4. make; make install
+$ mkdir po/XX
+$ cd po/XX
+$ cp ../jump.pot jump.po
+$ edit jump.po
+$ msgfmt jump.po -o jump.mo
+
+*** If msgfmt complains about encoding,
+    you need to change from UTF-8 to
+    ISO-8859-1
+
+$ iconv -f utf-8 -t iso-8859-1 jump.po -o x
+$ cp x jump.po
+$ msgfmt jump.po -o jump.mo
+
+3. compile and install
+
+go back to our root dir, and do
+
+$ make
+$ sudo make install
+
+4. run the program
 
 $ LANGUAGE=es ./jump
-no es posible leer el mapa
+no es posible leer el archivo de mapa
+
