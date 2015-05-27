@@ -18,7 +18,12 @@
 int main() {
 	char *filename;
 	char **map;
-	player p = malloc(sizeof (struct player_str));
+	player p;
+	setlocale(LC_ALL,"");
+	bindtextdomain("jump","/usr/share/locale");
+	textdomain("jump");		
+
+	p = malloc(sizeof (struct player_str));
 	/* FIXME: */
 	p->symbol = '*';
 	p->x = 4;
@@ -30,7 +35,7 @@ int main() {
 	map = readmap (filename);
 
 	if (map==NULL) {
-		printf(_("couldn't read map"));
+		printf(_("cannot read map file!\n"));
 		exit (-1);
 	}
 
