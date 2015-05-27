@@ -1,3 +1,11 @@
+the subdirectory "po" has translations of all
+strings used in the program. the structure is:
+
+po/jump.pot   (template for translations)
+po/XX/jump.po (translation for language XX)
+po/XX/jump.mo (compiled trasnlation for language XX)
+
+This is how we translate:
 
 1. To get a ".po" file,
 
@@ -26,14 +34,19 @@ $ iconv -f utf-8 -t iso-8859-1 jump.po -o x
 $ cp x jump.po
 $ msgfmt jump.po -o jump.mo
 
-3. compile and install
+3. edit the Makefile
+
+Make sure the makefile installs the .mo files for
+the chosen language.
+
+4. compile and install
 
 go back to our root dir, and do
 
 $ make
 $ sudo make install
 
-4. run the program
+5. run the program
 
 $ LANGUAGE=es ./jump
 no es posible leer el archivo de mapa

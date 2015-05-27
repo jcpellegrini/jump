@@ -1,1 +1,7 @@
 this is a directory for translations
+the structure is this:
+
+po/jump.pot   (template for translations)
+po/XX/jump.po (translation for language XX)
+po/XX/jump.mo (compiled trasnlation for language XX)
+
