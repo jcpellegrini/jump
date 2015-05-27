@@ -5,6 +5,8 @@
 */
 
 #include <stdio.h>
+#include <libintl.h>
+#define _(str) gettext(str)
 
 #include "player.h"
 #include "readmap.h"
@@ -21,6 +23,11 @@ void bump() {
 }
 
 
+void finish(FILE *out) {
+	fprintf(out,_("goodbye!\n"));
+}
+
+
 /**
    keyboard_interact implements an interaction loop:
    it will
@@ -30,7 +37,10 @@ void bump() {
    4. start again at (1)
  **/
 void keyboard_interact(char **map, player p) {
-	FILE *in = stdin;
+        /* FIXME: in and out should be passed as parameters, or
+	   be retrieved via an API */
+	FILE *in  = stdin;
+	FILE *out = stdout;
 	int new_x,new_y;
 	char cmd;
 	for (;;) {
@@ -43,10 +53,12 @@ void keyboard_interact(char **map, player p) {
 
 		/* FIXME: what if we want to translate the commands? */
 		switch (cmd) {
-			case 'n': new_x--; break;
-			case 's': new_x++; break;
-			case 'e': new_y++; break;
-			case 'w': new_y--; break;
+		case 'n': new_x--; break;
+		case 's': new_x++; break;
+		case 'e': new_y++; break;
+		case 'w': new_y--; break;
+		case 'q': finish(out);
+			return;
 		}
 
 		if (map[new_x][new_y]==WALL)
