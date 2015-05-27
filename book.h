@@ -20,7 +20,7 @@ struct book_str {
 	int  x;
 	int  y;
 
-	char *msg = "This is a book. Do you wanna read it?";
+	char msg[] = "This is a book. Do you wanna read it?";
 	char symbol;
 };
 
