@@ -9,10 +9,10 @@
 #define PLAYER_H
 
 /**
-   player has "x" and "y", which rpresent its position on the
+   player has "x" and "y", which represent its position on the
    map; and "symbol", which is the character used to represent it.
 
-   FIXME: the "symbol" attribute is only relevand if we use the
+   FIXME: the "symbol" attribute is only relevant if we use the
    ASCII representation of the map. If we use a graphical one,
    it won't make sense.
 **/
