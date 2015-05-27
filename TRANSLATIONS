@@ -1,0 +1,15 @@
+
+1. To get a ".po" file,
+
+$ xgettext -d jump -o po/jump.pot -k_ -s *.c
+
+2. use poedit to translate the messages
+
+$ poedit po/jump.pot
+
+3. save in po/XX/
+
+4. make; make install
+
+$ LANGUAGE=es ./jump
+no es posible leer el mapa
