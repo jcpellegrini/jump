@@ -37,12 +37,15 @@ void finish(FILE *out) {
    4. start again at (1)
  **/
 void keyboard_interact(char **map, player p) {
-        /* FIXME: in and out should be passed as parameters, or
+
+    /* FIXME: in and out should be passed as parameters, or
 	   be retrieved via an API */
 	FILE *in  = stdin;
 	FILE *out = stdout;
-	int new_x,new_y;
+	int new_x,new_y, dimx, dimy;
 	char cmd;
+
+
 	for (;;) {
 		show_map_player(map,p);
 
@@ -53,19 +56,20 @@ void keyboard_interact(char **map, player p) {
 
 		/* FIXME: what if we want to translate the commands? */
 		switch (cmd) {
-		case 'n': new_x--; break;
-		case 's': new_x++; break;
-		case 'e': new_y++; break;
-		case 'w': new_y--; break;
-		case 'q': finish(out);
-			return;
+
+			case 'n': new_x--; break;
+			case 's': new_x++; break;
+			case 'e': new_y++; break;
+			case 'w': new_y--; break;
+			case 'q': finish(out); return;
+
 		}
 
 		if (map[new_x][new_y]==WALL)
 			bump();
 		else if (map[new_x][new_y]==SPACE) {
 			p->x=new_x; 
-	        	p->y=new_y;
+	        p->y=new_y;
 		}
 	}
 

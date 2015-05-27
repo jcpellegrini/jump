@@ -24,9 +24,9 @@ msgstr "Ce n'est pas possible lire le fichier de carte!\n"
 #: kbd_interaction.c:27
 #, c-format
 msgid "goodbye!\n"
-msgstr "Adeus!\n"
+msgstr "Au revoir!\n"
 
 #: readmap.c:48 readmap.c:54
 #, c-format
 msgid "not enough memory!\n"
-msgstr "Falta memória!\n"
+msgstr "Mémoire insuffisante!\n"

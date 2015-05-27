@@ -30,3 +30,8 @@ msgstr "Au revoir!\n"
 #, c-format
 msgid "not enough memory!\n"
 msgstr "Mémoire insuffisante!\n"
+
+#: main.c:39
+#, c-format
+msgid "you have to choose a map file in the argument\n"
+msgstr "vous devez choisir un fichier de carte dans l'argument\n"
