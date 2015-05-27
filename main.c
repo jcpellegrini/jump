@@ -16,7 +16,7 @@
 #include "readmap.h"
 #include "kbd_interaction.h"
 
-int main() {
+int main(int argc, char *argv[]) {
 	char *filename;
 	char **map;
 	player p;
@@ -30,9 +30,16 @@ int main() {
 	p->x = 4;
 	p->y = 4;
 
-	filename=malloc(100);       /* FIXME: fixed length? */
-	strcpy(filename,"map.txt"); /* FIXME: user can't choose map
-                                              filename */
+
+	if(argc > 1) {
+		filename=malloc(100);       /* FIXME: fixed length? */
+		// FIXED: user can choose map filename
+		strcpy(filename, argv[1]);
+	} else {
+		printf(_("you have to choose a map file in the argument\n"));
+		exit(-1);
+	}
+
 	map = readmap (filename);
 
 	if (map==NULL) {
