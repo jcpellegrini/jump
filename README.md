@@ -28,4 +28,4 @@ Currently only the map walking part is implemented. The next steps are:
 
 # Forum
 
-We have an [online forum](http://aleph0.info/jump). 
+We have an [online forum](http://jump.aleph0.info/). 
