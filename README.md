@@ -26,4 +26,6 @@ Currently only the map walking part is implemented. The next steps are:
 * expand the previous item so a user can also have his history told,
   in natural language, through different servers
 
+# Forum
 
+We have an [online forum](http://aleph0.info/jump). 
