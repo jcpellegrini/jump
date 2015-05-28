@@ -20,7 +20,7 @@ msgstr ""
 #: main.c:46 readmap.c:40
 #, c-format
 msgid "cannot read map file!\n"
-msgstr "Não é possível lr o arquivo de mapa!\n"
+msgstr "Não é possível ler o arquivo de mapa!\n"
 
 #: kbd_interaction.c:27
 #, c-format
