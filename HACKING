@@ -1,0 +1,96 @@
+
+## OBJECTS
+
+We will simulate a class hierarchy as it is used in C++ and Java, but
+we don't couple methods to classes, and don't do method inheritance/shadowing.
+
+The `item` object is defined as follows:
+
+```
+#include "type.h"
+
+struct item_str {
+	_type    type;
+	position pos;
+	char     *name;
+};
+
+typedef struct item_str  *item;
+```
+
+An object, for example a book, would be defined as this:
+
+```
+#include "item.h"
+
+strict book_str {
+    struct item_str item;
+    char     *title;
+    char     *author;
+    unsigned weight;
+    char     *desc; /* description */
+}
+```
+
+Then we can take an object, which is always a pointer, cast to
+"item" and check its type, then cast it to the correct type of
+object:
+
+```
+    p = next_object();
+    type = item(p)->type;
+    if (type==BOOK) {
+        deal_with_book ( (book(p) );
+    }
+```
+
+
+## ERRORS
+
+There are two kinds of errors: 
+
+* a *user error* is an error triggered by user interaction 
+  or otherwise by normal operation at runtime
+  (a map file with negative dimensions, a nonexistent
+  option for a menu, or not enough memory, for example). 
+* a *programming error* is an error made by a programmer.
+
+
+### User errors
+
+User errors are dealt with by calling the `error()` function.
+This is best explaind with an example: if the `map_read()` function
+cannot allocate enough memory for the map, this function is called:
+
+
+```
+   error(MAP_READ_ERROR, "map_read: not enough memory to allocate map (%u x %u)",rows,cols);
+```
+
+The prototype for `error()` is
+
+```
+error(int error_code, const cha *fmt, ...)
+```
+
+where
+
+* `error_code` is the code passed to `exit()`
+* `fmt` is a string format for `printf`
+* the other arguments (`...`) are those that would be passed to `printf`
+
+## Programming Errors
+
+Programming errors should be caught using `assert()`. For example,
+the `read_map()` function accepts a `FILE` argument. Obviously, if
+someone passes `NULL` as this parameter, this is a programming error,
+so we check this with `assert()`:
+
+
+```
+int map_read(map m, FILE in) {
+        ...
+	assert(NULL != FILE);
+```
+
+
