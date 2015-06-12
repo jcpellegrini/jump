@@ -14,11 +14,17 @@
 #include "item.h"
 #include "command.h"
 
-#define SPACE ' '
-#define WALL  '#'
-
 
 void map_destroy(map m) {
+	int i;
+	assert(NULL!=m);
+	assert(NULL!=m->matrix);
+	for (i=0; i<m->rows; i++) {
+		assert(NULL!=m->matrix[i]);
+		free(m->matrix[i]);
+	}
+	free (m->matrix);
+	free(m);
 }
 
 /**
