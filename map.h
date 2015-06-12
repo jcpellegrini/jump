@@ -8,12 +8,22 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include "player.h"
+#include "command.h"
 
+struct map_str {
+	int rows;
+	int cols;
+	char **matrix;
+};
+typedef struct map_str *map;
+
+map map_create(int rows, int cols);
 void map_destroy(map m);
-int map_serialize(char *out, map m);
-int map_deserialize(map m, char *in);
-int map_read(map m, FILE in);
-int map_write(map m, FILE out);
+void map_serialize(char *out, map m);
+void map_deserialize(map m, char *in);
+map map_read(char *filename);
+void map_write(map m, char *filename);
 int map_move_player(map m, player p, command c);
 
 

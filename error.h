@@ -8,6 +8,9 @@
 #ifndef ERROR_H
 #define ERROR_H
 
+#define MAP_READ_ERROR  01
+#define MAP_WRITE_ERROR 02
+
 void error(int error_code, const char *fmt, ...);
 
-#endef
+#endif

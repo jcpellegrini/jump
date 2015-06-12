@@ -8,18 +8,15 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-/**
-   player has "x" and "y", which represent its position on the
-   map; and "symbol", which is the character used to represent it.
+#include "position.h"
+#include "item.h"
 
-   FIXME: the "symbol" attribute is only relevant if we use the
-   ASCII representation of the map. If we use a graphical one,
-   it won't make sense.
+/**
+
 **/
 struct player_str {
-	int  x;
-	int  y;
-	char symbol;
+	position  pos;
+	item     *things;
 };
 
 typedef struct player_str  *player;
